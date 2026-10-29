@@ -41,18 +41,19 @@ public:
             return head;
         }
         ListNode *slow = head;
-        ListNode *fast = head ->next;
-
+        ListNode *fast = head ;
+        ListNode *prev = nullptr;
         while(fast != nullptr && fast -> next != nullptr){
+            prev= slow;
             slow = slow -> next;
-
             fast = fast -> next -> next;
         }
-        ListNode *first = head;
-        ListNode *second = slow -> next;
-        slow -> next = nullptr;
-        ListNode *firsthead = sortList(first);
-        ListNode *secondhead = sortList(second);
+        // ListNode *first = head;
+        // ListNode *second = slow -> next;
+        // slow -> next = nullptr;
+        prev -> next = nullptr;
+        ListNode *firsthead = sortList(head);
+        ListNode *secondhead = sortList(slow);
 
         return merger(firsthead,secondhead);
 
